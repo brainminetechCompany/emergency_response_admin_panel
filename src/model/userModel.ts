@@ -3,7 +3,7 @@ import { UserType } from "@/lib/enums";
 import { Timestamp } from "firebase/firestore";
 
 export interface UserModel {
-  uuid: string; // Unique identifier
+  uuid: string; // Unique identifier -> Auth UID
   name: string; // Encrypted user's name
   phoneNumber: string; // Encrypted contact number
   email?: string; // Encrypted optional email address
