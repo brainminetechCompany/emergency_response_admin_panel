@@ -17,9 +17,10 @@ export interface UserModel {
 }
 
 // Namespace for UserModel utilities
-export namespace UserModelUtils {
+// eslint-disable-next-line @typescript-eslint/no-namespace
+export namespace  UserModelUtils {
   // Check if a field is encrypted (base64 check)
-  function isEncrypted(text: string): boolean {
+  function isEncrypted (text: string): boolean {
     const base64Regex = /^[A-Za-z0-9+/]+={0,2}$/;
     return base64Regex.test(text);
   }
@@ -39,7 +40,7 @@ export namespace UserModelUtils {
     return {
       uuid: user.uuid,
       name: encryptIfNeeded(user.name),
-      phoneNumber: encryptIfNeeded(user.phoneNumber),
+      phoneNumber: EncryptionHandler.encryptPHIText(user.phoneNumber),
       email: user.email ? encryptIfNeeded(user.email) : undefined,
       userType: user.userType,
       pushToken: user.pushToken,
